@@ -1,16 +1,19 @@
 package org.example.latifasystemarkitekturuppgift2;
 
-public class Main {
+import org.jboss.weld.environment.se.Weld;
+import org.jboss.weld.environment.se.WeldContainer;
 
-    public static void main(String[] args) {
 
-        Container container = new Container();
+    public class Main {
 
-        // Ask the container to create BlackWhitePrinter and its dependencies.
-        BlackWhitePrinter printer =
-                container.getInstance(BlackWhitePrinter.class);
+        public static void main(String[] args) {
 
-        // Use the created printer.
-               printer.print("Hello!");
+            try (WeldContainer container = new Weld().initialize()) {
+
+                BlackWhitePrinter printer =
+                        container.select(BlackWhitePrinter.class).get();
+
+                printer.print("Hello!");
+            }
+        }
     }
-}
