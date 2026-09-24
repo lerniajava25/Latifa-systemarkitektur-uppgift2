@@ -4,10 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Paper paper = new A3Paper();
+        Container container = new Container();
 
-        Printer printer = new BlackWhitePrinter(paper);
+        // Ask the container to create BlackWhitePrinter and its dependencies.
+        BlackWhitePrinter printer =
+                container.getInstance(BlackWhitePrinter.class);
 
-        printer.print("Hello!");
+        // Use the created printer.
+               printer.print("Hello!");
     }
 }
