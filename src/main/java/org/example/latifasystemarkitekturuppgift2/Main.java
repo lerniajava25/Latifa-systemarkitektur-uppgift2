@@ -6,9 +6,11 @@ public class Main {
 
         Container container = new Container();
 
+        // Ask the container to create BlackWhitePrinter and its dependencies.
         BlackWhitePrinter printer =
                 container.getInstance(BlackWhitePrinter.class);
 
-        printer.print("Hello!");
+        // Use the created printer.
+               printer.print("Hello!");
     }
 }
